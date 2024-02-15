@@ -17,11 +17,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.oidcSecurityService.checkAuth().subscribe((auth) => {
+      console.log('auth', auth);
       console.log('is authenticated', auth.isAuthenticated);
-      if (!auth.isAuthenticated) {
-        this.router.navigate(['home']);
-      } else {
+      if (auth.errorMessage) {
+        console.log('error', auth.errorMessage);
+      }
+      if (auth.isAuthenticated) {
         this.router.navigate(['profile']);
+      } else {
+        this.router.navigate(['home']);
       }
     });
   }

@@ -15,14 +15,20 @@ export class ProfileComponent /*implements OnInit*/ {
     private authService: AuthServiceService
   ) {}
 
-  // ngOnInit() {
-  //   this.oidcSecurityService
-  //     .checkAuth()
-  //     .subscribe((loginResponse: LoginResponse) => {
-  //       const { isAuthenticated, userData, accessToken, idToken, configId } = loginResponse;
-  //       console.log('is authenticated', loginResponse);
-  //     });
-  // }
+  ngOnInit() {
+    this.oidcSecurityService
+      .checkAuth()
+      .subscribe(({ isAuthenticated, userData, accessToken }) => {
+        if (isAuthenticated) {
+          // El usuario está autenticado y el accessToken está disponible para su uso.
+          console.log('userData', userData);
+          console.log('accessToken', accessToken);
+        } else {
+          // Manejar el caso cuando el usuario no está autenticado.
+          console.log('El usuario no está autenticado');
+        }
+      });
+  }
 
   return() {
     this.authService.logout();

@@ -8,17 +8,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthConfigModule } from './auth/auth-config.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ProfileComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AuthConfigModule
-  ],
+  declarations: [AppComponent, HomeComponent, ProfileComponent],
+  imports: [BrowserModule, AppRoutingModule, AuthConfigModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
